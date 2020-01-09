@@ -9,3 +9,11 @@ class shortener(models.Model):
 
 	def __unicode__(self):
 		return str(self.url) 
+
+
+
+'''
+python manage.py makemigration
+python manage.py migrate
+python manage.py createsuperuser
+'''
