@@ -4,9 +4,9 @@ from django.db import models
 # Create your models here.
 
 
-#def code_generator(size=6 , chars='abcdefghijklmnopqrstuvwxyz'):
+def code_generator(size=6 , chars='abcdefghijklmnopqrstuvwxyz'):
 	
-#	return ''.join(random.choice(chars) for _ in range(size))
+	return ''.join(random.choice(chars) for _ in range(size))
 
 
 class shortener(models.Model):
@@ -17,9 +17,9 @@ class shortener(models.Model):
 	#empty_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
 	
 
-#	def save(self, *args, **kwargs):
-#		print("something")
-#		super(shortener, self).save(*args , **kwargs)
+	def save(self, *args, **kwargs):
+		print("something")
+		super(shortener, self).save(*args , **kwargs)
 
 
 
