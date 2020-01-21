@@ -19,6 +19,7 @@ class shortener(models.Model):
 
 	def save(self, *args, **kwargs):
 		print("something")
+		self.shortcode = code_generator()
 		super(shortener, self).save(*args , **kwargs)
 
 
