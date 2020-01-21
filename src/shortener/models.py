@@ -6,7 +6,7 @@ class shortener(models.Model):
 	shortcode = models.CharField(max_length=15, unique=True)
 	updated = models.DateTimeField(auto_now=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
-	empty_datetime = models.DateTimeField(auto_now=False, auto_new_add=False)
+	empty_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
 	
 
 
