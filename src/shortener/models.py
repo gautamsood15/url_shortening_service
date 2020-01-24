@@ -1,5 +1,8 @@
-from .utils import code_generator
 from django.db import models
+
+
+
+from .utils import code_generator, create_shortcode
 
 # Create your models here.
 
