@@ -6,7 +6,7 @@ from .utils import code_generator, create_shortcode
 
 # Create your models here.
 
-
+       
 
 class shortener(models.Model):
 	url = models.CharField(max_length=220, )
