@@ -9,9 +9,9 @@ from .utils import code_generator, create_shortcode
        
 
 class shortener(models.Model):
-	url = models.CharField(max_length=220, )
+	url       = models.CharField(max_length=220, )
 	shortcode = models.CharField(max_length=15, unique=True, blank=True)
-	updated = models.DateTimeField(auto_now=True)
+	updated   = models.DateTimeField(auto_now=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
 	#empty_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
 	
@@ -19,8 +19,8 @@ class shortener(models.Model):
 	def save(self, *args, **kwargs):
 		if self.shortcode is None or self.shortcode == "":	
 			print("something")
-			self.shortcode = code_generator()
-			super(shortener, self).save(*args , **kwargs)
+			self.shortcode = create_shortcode(self)
+		super(shortener, self).save(*args , **kwargs)
 
 
 
