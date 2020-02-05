@@ -18,8 +18,10 @@ from django.contrib import admin
 
 from shortener.views import url_redirect_view, URLCBView
 
+from shortener import views
+
 urlpatterns = [
-    url(r'^new-admin/', admin.site.urls),
-    url(r'^view-1/$', url_redirect_view),
-    url(r'^view-2/$', URLCBView.as_view())
+    url(r'^admin/', admin.site.urls),
+    url(r'^a/(?P<shortcode>[\w-]+)/$', url_redirect_view),
+    url(r'^b/(?P<shortcode>[\w-]+)/$', URLCBView.as_view())
 ]
