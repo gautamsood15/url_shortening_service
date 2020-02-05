@@ -14,6 +14,21 @@ class shortenerManager(models.Manager):
 		return qs
 
 
+	def refresh_shortcode(self, items=None):
+		qs = shortener.objects.filter(id__gte=1) 
+		if items is not None and isinstance(items, int):
+			qs = qs.order_by('-id')[:items]
+		new_codes = 0			
+		for q in qs:
+			q.shortcode = create_shortcode(q)
+			print(q.id)
+			q.save()
+			new_codes += 1
+		return "New codes made: {i}".format(i=new_codes)
+
+
+
+
 class shortener(models.Model):
 	url       = models.CharField(max_length=220, )
 	shortcode = models.CharField(max_length=15, unique=True, blank=True)
@@ -33,6 +48,12 @@ class shortener(models.Model):
 		if self.shortcode is None or self.shortcode == "":	
 			self.shortcode = create_shortcode(self)
 		super(shortener, self).save(*args , **kwargs)
+
+
+#class Meta:
+#	ordering = '-id'
+
+
 
 
 
