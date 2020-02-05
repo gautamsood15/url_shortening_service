@@ -10,7 +10,7 @@ class shortenerManager(models.Manager):
 	
 	def all(self , *args , **kwargs):
 		qs_main = super(shortenerManager, self).all(*args, **kwargs)
-		qs = qs_main.filter(active=False)
+		qs = qs_main.filter(active=True)
 		return qs
 
 
@@ -23,9 +23,14 @@ class shortener(models.Model):
 	#empty_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
 	
 
+
+	objects = shortenerManager()
+	#some_random = shortenerManager()
+
+
+
 	def save(self, *args, **kwargs):
 		if self.shortcode is None or self.shortcode == "":	
-			print("something")
 			self.shortcode = create_shortcode(self)
 		super(shortener, self).save(*args , **kwargs)
 
@@ -45,4 +50,5 @@ class shortener(models.Model):
 python manage.py makemigration
 python manage.py migrate
 python manage.py createsuperuser
+
 '''
