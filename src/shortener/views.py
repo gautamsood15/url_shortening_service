@@ -6,6 +6,11 @@ from .models import shortener
 
 # Create your views here.
 
+def test_view(request):
+	return HttpResponse("some stuff")
+
+
+
 def url_redirect_view(request, shortcode=None, *args, **kwargs):     # FXN based view
 	obj = get_object_or_404(shortener, shortcode=shortcode)
 	return HttpResponse(obj.url)

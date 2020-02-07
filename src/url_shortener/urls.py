@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from shortener.views import url_redirect_view, URLCBView
+from shortener.views import url_redirect_view, URLCBView, test_view
 
-from shortener import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^a/(?P<shortcode>[\w-]+)/$', url_redirect_view),
-    url(r'^b/(?P<shortcode>[\w-]+)/$', URLCBView.as_view())
+    url(r'^about/$', test_view),
+    url(r'^(?P<shortcode>[\w-]+){6,15}$', url_redirect_view),
+    url(r'^b/(?P<shortcode>[\w-]+){6,15}$', URLCBView.as_view())
 ]
