@@ -7,10 +7,6 @@ from .models import shortener
 # Create your views here.
 
 def url_redirect_view(request, shortcode=None, *args, **kwargs):     # FXN based view
-	
-	print('method is \n')
-	print(request.method)
-
 	obj = get_object_or_404(shortener, shortcode=shortcode)
 	return HttpResponse("hello {sc}".format(sc=obj.url))
 
