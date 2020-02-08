@@ -6,21 +6,16 @@ from .models import shortener
 
 # Create your views here.
 
-def test_view(request):
-	return HttpResponse("some stuff")
+class HomeView(View):
+	def get(self, request, *args, **kwargs):
+		return render(request, "home.html", {})
 
 
 
-def url_redirect_view(request, shortcode=None, *args, **kwargs):     # FXN based view
-	obj = get_object_or_404(shortener, shortcode=shortcode)
-	return HttpResponse(obj.url)
+
 
 
 class URLCBView(View):   # class based view
 	def get(self, request, shortcode=None, *args, **kwargs):
 		obj = get_object_or_404(shortener, shortcode=shortcode)
 		return HttpResponse(obj.url)
-
-
-	def post(self, request, *args, **kwargs):
-		return HttpResponse()
