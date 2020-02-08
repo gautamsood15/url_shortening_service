@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-
+from .validators import validators_url, validators_dot_com
 
 from .utils import code_generator, create_shortcode
 
@@ -33,7 +33,7 @@ class shortenerManager(models.Manager):
 
 
 class shortener(models.Model):
-	url       = models.CharField(max_length=220, )
+	url       = models.CharField(max_length=220, validators=[validators_url, validators_dot_com])
 	shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
 	updated   = models.DateTimeField(auto_now=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
