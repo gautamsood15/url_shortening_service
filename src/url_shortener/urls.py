@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view()),
     #url(r'^(?P<shortcode>[\w-]+){6,15}$', url_redirect_view),
-    url(r'^b/(?P<shortcode>[\w-]+){6,15}$', URLCBView.as_view())
+    url(r'^(?P<shortcode>[\w-]+)/$', URLCBView.as_view(), name='scode')
 ]

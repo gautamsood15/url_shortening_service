@@ -61,7 +61,7 @@ ROOT_URLCONF = 'url_shortener.urls'
 ROOT_HOSTCONF = 'url_shortener.hosts'
 DEFAULT_HOST = 'www'
 DEFAULT_REDIRECT_URL = 'http://www.gauty.com:8000'
-
+PARENT_HOST = "gauty.com:8000"
 
 
 

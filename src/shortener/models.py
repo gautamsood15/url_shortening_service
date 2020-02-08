@@ -1,6 +1,11 @@
 from django.conf import settings
 from django.db import models
 
+
+# from django.core.urlresolvers import reverse
+from django_hosts.resolvers import reverse
+
+
 from .validators import validators_url, validators_dot_com
 
 from .utils import code_generator, create_shortcode
@@ -53,15 +58,6 @@ class shortener(models.Model):
 		super(shortener, self).save(*args , **kwargs)
 
 
-#class Meta:
-#	ordering = '-id'
-
-
-
-
-
-
-
 	def __str__(self):
 		return str(self.url)
 
@@ -69,10 +65,7 @@ class shortener(models.Model):
 		return str(self.url) 
 
 
-
-'''
-python manage.py makemigration
-python manage.py migrate
-python manage.py createsuperuser
-
-'''
+	def get_short_url(self):
+		print(self.shortcode)
+		url_path = reverse("scode", kwargs={'shortcode': self.shortcode}, host='www', scheme='http')
+		return url_path
