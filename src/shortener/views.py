@@ -25,16 +25,26 @@ class HomeView(View):
 
 	def post(self, request, *args, **kwargs):
 		from = SubmitUrlForm(request.POST)
-		if form.is_valid():
-			print(form.cleaned_data.get("url"))
-		
-
 		context = {
 			"title": "Submit URL",
 			"form": form
 		}
+		template = "shortener/home.html"
+		if form.is_valid():
+			new_url = from.cleaned_data.get("url")
+			obj, created = shortener.objects.get_or_created(url=new_url)
+			context = {
+				"object": obj,
+				"created":created,
+			}
 
-		return render(request, "shortener/home.html", context)
+		if created:
+			template = "shortener/success.html"
+		else:
+			template = "shortener/already-exists.html"
+
+
+		return render(request, template, context)
 
 
 
