@@ -66,6 +66,5 @@ class shortener(models.Model):
 
 
 	def get_short_url(self):
-		print(self.shortcode)
 		url_path = reverse("scode", kwargs={'shortcode': self.shortcode}, host='www', scheme='http')
 		return url_path
