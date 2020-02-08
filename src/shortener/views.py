@@ -48,7 +48,7 @@ class HomeView(View):
 
 
 
-class URLCBView(View):   # class based view
+class URLRedirectView(View):   # class based view
 	def get(self, request, shortcode=None, *args, **kwargs):
 		obj = get_object_or_404(shortener, shortcode=shortcode)
-		return HttpResponse(obj.url)
+		return HttpResponseRedirect(obj.url)
